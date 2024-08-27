@@ -31,13 +31,27 @@ class Tournament:
     def start(self):
         finishers = {}
         place = 1
-        while self.participants:
+        '''
+        Ощибка в коде: 
+        Список, по которому происходит итерация for, изменяется в этом самом цикле for.
+        Из-за этого после удаления элемента списка происходит пропуск следующей по порядку итерируемой величины
+        (следующий participant пропускает ход, а participant после него получает преимущество) 
+        '''
+        # while self.participants:
+        #     for participant in self.participants:
+        #         participant.run()
+        #         if participant.distance >= self.full_distance:
+        #             finishers[place] = participant
+        #             place += 1
+        #             self.participants.remove(participant)
+        while len(finishers) < len(self.participants):
             for participant in self.participants:
+                if participant.name in [value.name for value in finishers.values()]:
+                    continue
                 participant.run()
                 if participant.distance >= self.full_distance:
                     finishers[place] = participant
                     place += 1
-                    self.participants.remove(participant)
 
         return finishers
 
@@ -46,6 +60,7 @@ class TournamentTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.all_results = {}
+        cls.all_results_sum = []
 
     def setUp(self):
         self.usein = Runner('Усэйн', 10)
@@ -54,27 +69,32 @@ class TournamentTest(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        # print(cls.all_results)
-        for d in list(cls.all_results):
-            print({d:cls.all_results[d].name})
+        for dict_element in list(cls.all_results_sum):
+            dic_result = {}
+            for key in dict_element:
+                dic_result[key] = dict_element[key].name
+            print(dic_result)
 
     def test_run1(self):
         tournament = Tournament(90, self.usein, self.nik)
-        TournamentTest.all_results = tournament.start()
-        keys = list(TournamentTest.all_results.keys())
-        self.assertTrue(keys[len(keys) - 1], 'Ник')
+        self.all_results = tournament.start()
+        self.all_results_sum.append(self.all_results)
+        keys = list(self.all_results.keys())
+        self.assertTrue(self.all_results[keys[len(keys) - 1]] == 'Ник')
 
     def test_run2(self):
         tournament = Tournament(90, self.andrey, self.nik)
-        TournamentTest.all_results = tournament.start()
-        keys = list(TournamentTest.all_results.keys())
-        self.assertTrue(keys[len(keys) - 1], 'Ник')
+        self.all_results = tournament.start()
+        self.all_results_sum.append(self.all_results)
+        keys = list(self.all_results.keys())
+        self.assertTrue(self.all_results[keys[len(keys) - 1]] == 'Ник')
 
     def test_run3(self):
         tournament = Tournament(90, self.usein, self.andrey, self.nik)
-        TournamentTest.all_results = tournament.start()
-        keys = list(TournamentTest.all_results.keys())
-        self.assertTrue(keys[len(keys) - 1], 'Ник')
+        self.all_results = tournament.start()
+        self.all_results_sum.append(self.all_results)
+        keys = list(self.all_results.keys())
+        self.assertTrue(self.all_results[keys[len(keys) - 1]] == 'Ник')
 
 
 
