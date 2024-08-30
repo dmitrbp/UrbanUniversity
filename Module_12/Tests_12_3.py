@@ -55,8 +55,10 @@ class Tournament:
 
         return finishers
 
+
 class RunnerTest(unittest.TestCase):
     is_frozen = False
+
     @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_walk(self):
         walker = Runner('Walker')
@@ -80,8 +82,10 @@ class RunnerTest(unittest.TestCase):
             runner.run()
         self.assertNotEqual(walker.distance, runner.distance)
 
+
 class TournamentTest(unittest.TestCase):
     is_frozen = True
+
     @classmethod
     def setUpClass(cls):
         cls.all_results = {}
