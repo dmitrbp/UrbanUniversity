@@ -55,8 +55,33 @@ class Tournament:
 
         return finishers
 
+class RunnerTest(unittest.TestCase):
+    is_frozen = False
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
+    def test_walk(self):
+        walker = Runner('Walker')
+        for i in range(10):
+            walker.walk()
+        self.assertEqual(walker.distance, 50)
+
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
+    def test_run(self):
+        runner = Runner('Runner')
+        for i in range(10):
+            runner.run()
+        self.assertEqual(runner.distance, 100)
+
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
+    def test_challenge(self):
+        walker = Runner('Walker')
+        runner = Runner('Runner')
+        for i in range(10):
+            walker.walk()
+            runner.run()
+        self.assertNotEqual(walker.distance, runner.distance)
 
 class TournamentTest(unittest.TestCase):
+    is_frozen = True
     @classmethod
     def setUpClass(cls):
         cls.all_results = {}
@@ -75,6 +100,7 @@ class TournamentTest(unittest.TestCase):
                 dic_result[key] = dict_element[key].name
             print(dic_result)
 
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_run1(self):
         tournament = Tournament(90, self.usein, self.nik)
         self.all_results = tournament.start()
@@ -82,6 +108,7 @@ class TournamentTest(unittest.TestCase):
         keys = list(self.all_results.keys())
         self.assertTrue(self.all_results[keys[len(keys) - 1]] == 'Ник')
 
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_run2(self):
         tournament = Tournament(90, self.andrey, self.nik)
         self.all_results = tournament.start()
@@ -89,6 +116,7 @@ class TournamentTest(unittest.TestCase):
         keys = list(self.all_results.keys())
         self.assertTrue(self.all_results[keys[len(keys) - 1]] == 'Ник')
 
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_run3(self):
         tournament = Tournament(90, self.usein, self.andrey, self.nik)
         self.all_results = tournament.start()
@@ -98,5 +126,4 @@ class TournamentTest(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    # TournamentTest.run()
     unittest.main()
