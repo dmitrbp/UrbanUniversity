@@ -1,3 +1,5 @@
+from typing import Tuple
+
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher.filters.state import State, StatesGroup
@@ -11,10 +13,14 @@ api = key
 bot = Bot(token=api)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
-class UserState(State):
+class UserState(StatesGroup):
     age = State()
     growth = State()
     weight = State()
+
+@dp.message_handler(commands=['start'])
+async def start(message):
+    await message.answer('Привет! Я бот помогающий твоему здоровью.')
 
 @dp.message_handler(text = 'Calories')
 async def set_age(message):
@@ -33,13 +39,19 @@ async def set_weight(message, state):
     await message.answer('Введите свой вес:')
     await UserState.weight.set()
 
-@dp.message_handler(state = UserState.address)
-async def send_colories(message, state):
+@dp.message_handler(state = UserState.weight)
+async def send_calories(message, state):
     await state.update_data(weight = message.text)
     data = await state.get_data()
-    calories = data['weight'] * 10 +  data['growth'] * 6,25 + data['age'] * 5 + 5
-    await message.answer(f"Калорий: {calories}")
+    calories = float(data['weight']) * 10 + float(data['growth']) * 6.25 + float(data['age']) * 5 + 5
+    await message.answer(f'Ваша норма калорий: {calories}')
     await state.finish()
+
+@dp.message_handler()
+async def all_messages(message):
+    await message.answer('Введите команду /start, чтобы начать общение.')
+
+
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
