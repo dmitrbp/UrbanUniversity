@@ -27,19 +27,26 @@ values = [
 for row in values:
     cursor.execute('INSERT INTO Users(username, email, age, balance) VALUES(?, ?, ?, ?)', row)
 
-for i in range(1, len(values) + 1):
-    if (i - 1) % 2 == 0:
-        cursor.execute('UPDATE Users SET balance = 500 WHERE id = ?', (i,))
+# for i in range(1, len(values) + 1):
+#     if (i - 1) % 2 == 0:
+#         cursor.execute('UPDATE Users SET balance = 500 WHERE id = ?', (i,))
+ids = cursor.execute('SELECT id FROM Users').fetchall()
+for id in ids:
+    if (id[0] - 1) % 2 == 0:
+        cursor.execute('UPDATE Users SET balance = 500 WHERE id = ?', (id[0],))
 
-for i in range(1, len(values) + 1):
-    if (i - 1) % 3 == 0:
-        cursor.execute('DELETE FROM Users WHERE id = ?', (i,))
+# for i in range(1, len(values) + 1):
+#     if (i - 1) % 3 == 0:
+#         cursor.execute('DELETE FROM Users WHERE id = ?', (i,))
+ids = cursor.execute('SELECT id FROM Users').fetchall()
+for id in ids:
+    if (id[0] - 1) % 3 == 0:
+        cursor.execute('DELETE FROM Users WHERE id = ?', (id[0],))
 
 cursor.execute("SELECT * FROM Users WHERE age <> 60")
 users = cursor.fetchall()
 for user in users:
     print(f'Имя: {user[1]} | Почта: {user[2]} | Возраст: {user[3]} | Баланс: {user[4]}')
-print(users)
 
 cursor.close()
 connection.commit()
