@@ -4,11 +4,22 @@ connection = sqlite3.connect('not_telegram.db')
 cursor = connection.cursor()
 
 def initiate_db():
-    cursor.execute('''CREATE TABLE IF NOT EXISTS Products(
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Products(
         id INTEGER PRIMARY KEY,
         title TEXT NOT NULL,
         description TEXT,
         price INTEGER NOT NULL
+        );
+        '''
+    )
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Users(
+        id INTEGER PRIMARY KEY,
+        username TEXT NOT NULL,
+        email TEXT NOT NULL,
+        age INTEGER NOT NULL,
+        balance INTEGER NOT NULL
         );
         '''
     )
@@ -31,4 +42,16 @@ def fill_products():
             cursor.execute('INSERT INTO Products(title, description, price) VALUES(?, ?, ?)', row)
     connection.commit()
 
+def add_user(username, email, age):
+    cursor.execute('''
+        INSERT INTO Users(username, email, age, balance) VALUES(?, ?, ?, ?)''',
+        (username, email, age, 1000)
+    )
+    connection.commit()
 
+def is_included(username):
+    return bool(
+        cursor.execute(
+        'SELECT COUNT(*) FROM Users WHERE username = ?', (username, )
+        ).fetchone()[0]
+    )
