@@ -43,10 +43,11 @@ for id in ids:
     if (id[0] - 1) % 3 == 0:
         cursor.execute('DELETE FROM Users WHERE id = ?', (id[0],))
 
-cursor.execute("SELECT * FROM Users WHERE age <> 60")
-users = cursor.fetchall()
-for user in users:
-    print(f'Имя: {user[1]} | Почта: {user[2]} | Возраст: {user[3]} | Баланс: {user[4]}')
+cursor.execute("DELETE FROM Users WHERE id = 6")
+
+count = cursor.execute("SELECT COUNT(*) FROM Users").fetchone()[0]
+sum_balance = cursor.execute("SELECT SUM(balance) FROM Users").fetchone()[0]
+print(sum_balance / count)
 
 cursor.close()
 connection.commit()
