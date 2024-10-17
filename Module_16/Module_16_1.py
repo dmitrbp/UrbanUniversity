@@ -21,4 +21,4 @@ async def query_route(username = 'NoName', age = 'NoAge') -> str:
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="localhost", port=8001)
+    uvicorn.run(app, host="localhost", port=8000)
