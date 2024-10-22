@@ -57,5 +57,7 @@ async def delete_user(
         raise HTTPException(status_code=404, detail="User was not found")
 
 
+
+
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)
