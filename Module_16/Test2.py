@@ -26,6 +26,7 @@ user2.lst.append(2)
 users.append(user1)
 users.append(user2)
 
+
 for user in users:
     print(user.id, user.username, user.age, user.lst)
 
