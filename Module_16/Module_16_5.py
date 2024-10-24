@@ -1,11 +1,13 @@
-from fastapi import FastAPI, Path, HTTPException
+from fastapi import FastAPI, Path, status, HTTPException, Request
 from typing import Annotated, List
 from pydantic import BaseModel
+from fastapi.templating import Jinja2Templates
 import uvicorn
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 app = FastAPI()
+templates = Jinja2Templates(directory='templates')
 
 class User(BaseModel):
     id: int
@@ -16,8 +18,13 @@ class User(BaseModel):
 users: list[User] = []
 
 
-@app.get('/users')
+@app.get('/')
 async def get_users() -> List[User]:
+    return users
+
+
+@app.get('/users/{user_id}')
+async def get_users() -> TemplateResponse:
     return users
 
 
