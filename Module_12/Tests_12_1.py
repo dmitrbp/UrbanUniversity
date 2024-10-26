@@ -22,6 +22,7 @@ class RunnerTest(unittest.TestCase):
         for i in range(10):
             walker.walk()
         self.assertEqual(walker.distance, 50)
+        # assert walker.distance == 50
 
     def test_run(self):
         runner = Runner('Runner')
