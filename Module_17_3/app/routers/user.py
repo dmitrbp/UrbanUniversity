@@ -12,6 +12,7 @@ from sqlalchemy import insert, select, update, delete
 # Функция создания slug-строки
 from slugify import slugify
 
+
 router = APIRouter(prefix='/user', tags=['user'])
 
 @router.get('/')

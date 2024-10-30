@@ -3,6 +3,7 @@ from sqlalchemy.orm import relationship
 from app.backend.db import Base
 # from app.models.task import Task
 
+
 class User(Base):
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True, index=True)
