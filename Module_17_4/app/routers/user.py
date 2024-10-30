@@ -7,6 +7,7 @@ from app.backend.db_depends import get_db
 # Аннотации, Модели БД и Pydantic.
 from typing import Annotated
 from app.models.user import User
+from app.models.task import Task
 from app.schemas import CreateUser, UpdateUser
 # Функции работы с записями.
 from sqlalchemy import insert, select, update, delete
@@ -29,6 +30,10 @@ async def user_by_id(db: Annotated[Session, Depends(get_db)], user_id: int):
             detail="User was not found"
         )
     return user
+
+@router.get('/{user_id}/tasks')
+async def tasks_by_userid(db: Annotated[Session, Depends(get_db)], user_id: int):
+    return db.scalars(select(Task).where(Task.user_id == user_id)).all()
 
 @router.post('/create')
 async def create_user(db: Annotated[Session, Depends(get_db)], create_user: CreateUser):
@@ -75,6 +80,7 @@ async def delete_user(db: Annotated[Session, Depends(get_db)], user_id: int):
             detail="User was not found"
         )
     db.execute(delete(User).where(User.id == user_id))
+    db.execute(delete(Task).where(Task.user_id == user_id))
     db.commit()
     return {
         'status_code': status.HTTP_200_OK,
