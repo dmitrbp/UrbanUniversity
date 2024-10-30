@@ -1,3 +1,4 @@
+# import fastapi
 from fastapi import APIRouter, Depends, status, HTTPException, Response
 # Сессия БД
 from sqlalchemy.orm import Session
@@ -20,7 +21,7 @@ async def all_users(db: Annotated[Session, Depends(get_db)]):
     return db.scalars(select(User)).all()
 
 @router.get('/{user_id}')
-async def user_by_id(db: Annotated[Session, Depends(get_db)], user_id: int, resporse: Response):
+async def user_by_id(db: Annotated[Session, Depends(get_db)], user_id: int):
     user = db.scalar(select(User).where(User.id == user_id))
     if user is None:
         raise HTTPException(
