@@ -18,7 +18,6 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
 from task2.views import cview, fview
-from task2.views import fview
 
 urlpatterns = [
     path('admin/', admin.site.urls),
