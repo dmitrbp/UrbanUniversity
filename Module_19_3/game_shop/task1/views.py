@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import UserRegister
-
-users = ['user1', 'user2', 'user3']
+from .models import *
 
 def checkup(username, password, repeat_password, age):
-    if [user for user in users if user.lower() == username.lower()]:
+    buyers = Buyer.objects.all()
+    if [buyer for buyer in buyers if buyer.name.lower() == username.lower()]:
         return 'Пользователь уже существует'
     if password != repeat_password:
         return 'Пароли не совпадают'
@@ -25,12 +25,13 @@ def platform_view(request):
 
 def games_view(request):
     title = 'Игры'
+    games = Game.objects.all()
     context = {
         'title': title,
-        'main_page': 'Главная',
-        'shop_page': 'Магазин',
-        'cart_page': 'Корзина',
-        'games': ['Atomic Heart', 'Cyberpunk 2077', 'PayDay 2', 'Diablo III']
+        'main_page' : 'Главная',
+        'shop_page' : 'Магазин',
+        'cart_page' : 'Корзина',
+        'games' : games
     }
     return render(request, 'games.html', context)
 
@@ -58,6 +59,7 @@ def sign_up_by_django(request):
             info['checkup'] = checkup(username, password, repeat_password, age)
 
             if info['checkup'] == 'success':
+                Buyer.objects.create(name=username, balance=0, age=int(age))
                 return HttpResponse(f'Приветствуем, {username}!"')
     else:
         form = UserRegister()
@@ -76,10 +78,7 @@ def sign_up_by_html(request):
 
         info['checkup'] = checkup(username, password, repeat_password, age)
 
-        print(f'Username: {username}')
-        print(f'Password: {password}')
-        print(f'Age: {age}')
-
         if info['checkup'] == 'success':
+            Buyer.objects.create(name=username, balance=0, age=int(age))
             return HttpResponse(f'Приветствуем, {username}!"')
     return render(request, 'registration_page.html', info)
