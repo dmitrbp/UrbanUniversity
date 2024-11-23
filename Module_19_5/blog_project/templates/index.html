@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="container">
+      <h1 class="text-center">Список статей</h1>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Paginate By {{ request.GET.paginate_by }}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="?paginate_by=2&{{paginate_parameter}}">2</a>
+                <a class="dropdown-item" href="?paginate_by=5&{{paginate_parameter}}">5</a>
+                <a class="dropdown-item" href="?paginate_by=10&{{paginate_parameter}}">10</a>
+            </div>
+        </div>
+      <hr>
+
+      <ul class="list-group list-group-flush">
+        {% for post in page_obj %}
+          <li class="list-group-item">{{ post.post_title }}<br> {{ post.post_content }}</li>
+        {% endfor %}
+      </ul>
+
+      <br><hr>
+
+     {% include "pagination.html" %}
+    </div>
+</body>
+</html>
