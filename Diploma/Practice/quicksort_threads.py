@@ -1,3 +1,6 @@
+import random
+import sys
+import time
 import threading
 
 
@@ -32,10 +35,15 @@ def quick_sort(nums, low, high):
 
 
 # Example usage
-arr = [4, 5, 8, 3, 0, 5, 3, 9, 4, 3]
-print("Original array:", arr)
+# sys.setrecursionlimit(100000)
+arr_length = 100000
+# arr = [i if i % 2 else arr_length - i for i in range(arr_length, 0, -1)]
+arr = [random.randint(0, n * 100) for n in range(arr_length)]
+# print("Original array:", arr)
 
 # Perform multi-threaded quicksort
+start_time = time.time()
 quick_sort(arr, 0, len(arr) - 1)
 
-print("Sorted array:", arr)
+# print("Sorted array:", arr)
+print(f'Elapsed: {time.time() - start_time}')
