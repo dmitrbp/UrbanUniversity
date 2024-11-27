@@ -48,9 +48,7 @@ def merge_sort(array):
     return merge(left, right)
 
 def thread_merge_sort(array):
-    # Порог, до которого пораждаются потоки
     array_length = len(array)
-
     if array_length <= 1:
         return array
 
