@@ -138,7 +138,7 @@ if __name__ == '__main__':
     length = 100000
     print('Размер сортируемого массива - {:,}'.format(length).replace(',',' '))
 
-    main_timer = Timer('sync', 'thread', '2_core', '4_core', '6-core')
+    main_timer = Timer('sync', 'thread', '2_core', '4_core')
 
     # Создание массива для сортировки
     # randomized_array = [random.randint(0, n * 100) for n in range(length)]
