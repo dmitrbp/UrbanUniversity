@@ -2,6 +2,7 @@ from concurrent.futures import ThreadPoolExecutor
 import time
 from contextlib import contextmanager
 from multiprocessing import Manager, Pool
+import matplotlib.pyplot as plt
 
 
 class Timer():
@@ -135,46 +136,58 @@ def parallel_merge_sort(array, process_count):
 
 
 if __name__ == '__main__':
-    length = 100000
-    print('Размер сортируемого массива - {:,}'.format(length).replace(',',' '))
+    xlist = []
+    ylist = []
+    for length in range(100000, 200001, 25000):
+        xlist.append(length)
+        print('Размер сортируемого массива - {:,}'.format(length).replace(',',' '))
 
-    main_timer = Timer('sync', 'thread', '2_core', '4_core')
+        main_timer = Timer('sync', 'thread', '2_core', '4_core')
 
-    # Создание массива для сортировки
-    # randomized_array = [random.randint(0, n * 100) for n in range(length)]
-    unsorted_array = [i if i % 2 else length - i for i in range(length, 0, -1)]
+        # Создание массива для сортировки
+        # randomized_array = [random.randint(0, n * 100) for n in range(length)]
+        unsorted_array = [i if i % 2 else length - i for i in range(length, 0, -1)]
 
-    # Сортировка
+        # Сортировка
 
-    print('-- Запуск синхронной сортировки')
-    main_timer.start_for('sync')
-    sorted_array = merge_sort(unsorted_array)
-    main_timer.stop_for('sync')
-    # Создаение копии для предотвращения многопоточной интерференции
-    sorted_array_etalon = unsorted_array[:]
-    sorted_array_etalon.sort()
-    # Сравнение с методом сортировки списков Python (sort),
-    # служит для проверки правильности реализации.
-    print('Проверка отсортированного массова:', sorted_array_etalon == sorted_array)
-    print('Время синхронной сортировки: %4.6f sec' % main_timer['sync'])
+        print('-- Запуск синхронной сортировки')
+        main_timer.start_for('sync')
+        sorted_array = merge_sort(unsorted_array)
+        main_timer.stop_for('sync')
+        # Создаение копии для предотвращения многопоточной интерференции
+        sorted_array_etalon = unsorted_array[:]
+        sorted_array_etalon.sort()
+        # Сравнение с методом сортировки списков Python (sort),
+        # служит для проверки правильности реализации.
+        print('Проверка отсортированного массова:', sorted_array_etalon == sorted_array)
+        print('Время синхронной сортировки: %4.6f sec' % main_timer['sync'])
 
-    print('-- Запуск потоковой сортировки')
-    main_timer.start_for('thread')
-    thread_sorted_array = thread_merge_sort(unsorted_array)
-    main_timer.stop_for('thread')
-    print('Проверка отсортированного массова:', sorted_array_etalon == thread_sorted_array)
-    print('Время потоковой сортировки: %4.6f sec' % main_timer['thread'])
+        print('-- Запуск потоковой сортировки')
+        main_timer.start_for('thread')
+        thread_sorted_array = thread_merge_sort(unsorted_array)
+        main_timer.stop_for('thread')
+        print('Проверка отсортированного массова:', sorted_array_etalon == thread_sorted_array)
+        print('Время потоковой сортировки: %4.6f sec' % main_timer['thread'])
 
-    print('-- Запуск 2-х процессорной сортировки')
-    main_timer.start_for('2_core')
-    parallel_sorted_array = parallel_merge_sort(unsorted_array, 2)
-    main_timer.stop_for('2_core')
-    print('Проверка отсортированного массова:', sorted_array_etalon == parallel_sorted_array)
-    print('Время 2-х процессорной сортировки: %4.6f sec' % main_timer['2_core'])
+        print('-- Запуск 2-х процессорной сортировки')
+        main_timer.start_for('2_core')
+        parallel_sorted_array = parallel_merge_sort(unsorted_array, 2)
+        main_timer.stop_for('2_core')
+        print('Проверка отсортированного массова:', sorted_array_etalon == parallel_sorted_array)
+        print('Время 2-х процессорной сортировки: %4.6f sec' % main_timer['2_core'])
 
-    print('-- Запуск 4-х процессорной сортировки')
-    main_timer.start_for('4_core')
-    parallel_sorted_array = parallel_merge_sort(unsorted_array, 4)
-    main_timer.stop_for('4_core')
-    print('Проверка отсортированного массова:', sorted_array_etalon == parallel_sorted_array)
-    print('Время 4-х процессорной сортировки: %4.6f sec' % main_timer['4_core'])
+        print('-- Запуск 4-х процессорной сортировки')
+        main_timer.start_for('4_core')
+        parallel_sorted_array = parallel_merge_sort(unsorted_array, 4)
+        main_timer.stop_for('4_core')
+        print('Проверка отсортированного массова:', sorted_array_etalon == parallel_sorted_array)
+        print('Время 4-х процессорной сортировки: %4.6f sec' % main_timer['4_core'])
+
+        ylist.append((main_timer['sync'], main_timer['thread'], main_timer['2_core'], main_timer['4_core']))
+    plt.title('Сравнение времени сортировки слиянием')
+    plt.xlabel('Размер мвссива (элементов)')
+    plt.ylabel('Время выполнения (сек)')
+    plt.plot(xlist, ylist, label=('Sync', 'Threads', '2-core', '4-core'))
+    plt.legend()
+    plt.grid()
+    plt.show()
