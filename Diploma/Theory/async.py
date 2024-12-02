@@ -1,28 +1,24 @@
 import asyncio
-import datetime
-import random
+import time
 
 
-async def sleep_func():
-    await asyncio.sleep(random.randint(0, 5))
+maxnumber = 5
 
-async def display_date(num, loop):
-    end_time = loop.time() + 10.0
-    while True:
-        print("Loop: {} Time: {}".format(num, datetime.datetime.now()))
-        if (loop.time() + 1.0) >= end_time:
-            break
-        await sleep_func()
+async def worker(number):
+    sleep = maxnumber - number
+    await asyncio.sleep(sleep)
+    print("Рабочий процесс {}, засыпание на {} сек.".format(number, sleep))
 
-async def main():
-    t1 = loop.create_task(display_date(1, loop))
-    t2 = loop.create_task(display_date(2, loop))
-    await asyncio.wait([t1, t2])
+async def run():
+    print("Асинхронный корутинный процесс стартовал")
+    start_time = time.time()
+    tasks = []
+    for i in range(maxnumber):
+        tasks.append(worker(i))
 
+    print("Все корутины запущены, ожидаем завершения")
+    await asyncio.gather(*tasks)
 
-loop = asyncio.get_event_loop()
-asyncio.ensure_future(display_date(3, loop))
-asyncio.ensure_future(display_date(4, loop))
+    print("Асинхронный корутинный процесс завершен. Затрачено: {} сек".format(time.time() - start_time))
 
-asyncio.run(display_date(5, loop))
-loop.run_until_complete(main())
+asyncio.run(run())
