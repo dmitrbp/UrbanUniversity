@@ -3,9 +3,10 @@ import time
 from contextlib import contextmanager
 from multiprocessing import Manager, Pool
 import matplotlib.pyplot as plt
+import asyncio
 
 
-class Timer():
+class Timer:
     def __init__(self, *steps):
         self._time_per_step = dict.fromkeys(steps)
 
@@ -68,6 +69,21 @@ def thread_merge_sort(array, level = 0):
         right = future2.result()
     return merge(left, right)
 
+async def async_merge_sort(array):
+    array_length = len(array)
+    if array_length <= 1:
+        return array
+
+    middle_index = int(array_length / 2)
+    left = array[0:middle_index]
+    right = array[middle_index:]
+    task_left = async_merge_sort(left)
+    task_right = async_merge_sort(right)
+    # left = await async_merge_sort(left)
+    # right = await async_merge_sort(right)
+    left, right = await asyncio.gather(task_left, task_right)
+    return merge(left, right)
+
 def merge(left, right):
     sorted_list = []
     # Создаем копии, чтобы не изменять
@@ -89,7 +105,6 @@ def merge(left, right):
             sorted_list.append(right.pop(0))
     return sorted_list
 
-
 @contextmanager
 def process_pool(size):
     """
@@ -100,14 +115,12 @@ def process_pool(size):
     pool.close()
     pool.join()
 
-
 def parallel_merge_sort(array, process_count):
     # Делим список на части
     step = int(length / process_count)
 
-    # Используется объект multiprocessing.Manager, для
-    # хранения вывода каждого процесса.
-    # См. пример здесь
+    # Используется объект multiprocessing.Manager, для хранения вывода каждого процесса.
+    # Пример здесь:
     # http://docs.python.org/library/multiprocessing.html#sharing-state-between-processes
     manager = Manager()
     results = manager.list()
@@ -146,16 +159,17 @@ if __name__ == '__main__':
     y2 = []
     y3 = []
     y4 = []
-    for length in range(20000, 200001, 20000):
+    y5 = []
+    for length in range(20000, 100001, 20000):
         x.append(length)
         print('-- Размер сортируемого массива - {:,}'.format(length).replace(',',' '))
 
-        main_timer = Timer('sync', 'thread', '2_core', '4_core')
+        main_timer = Timer('sync', 'thread', 'asyncio', '2_core', '4_core')
 
         # Создание массива для сортировки
         # randomized_array = [random.randint(0, n * 100) for n in range(length)]
         unsorted_array = [i if i % 2 else length - i for i in range(length, 0, -1)]
-        # Создаение отслртированной копии для сравнения
+        # Создаение отсортированной копии для сравнения
         sorted_array_etalon = unsorted_array[:]
         sorted_array_etalon.sort()
 
@@ -182,6 +196,16 @@ if __name__ == '__main__':
             print('ThreadSort: Отсортированный массив не совпадает с эталонным')
             break
 
+        # Запуск корутинной сортировки
+        main_timer.start_for('asyncio')
+        sorted_array = asyncio.run(async_merge_sort(unsorted_array))
+        main_timer.stop_for('asyncio')
+        if sorted_array_etalon == sorted_array:
+            print('Время корутинной сортировки: %4.6f sec' % main_timer['asyncio'])
+        else:
+            print('AsyncSort: Отсортированный массив не совпадает с эталонным')
+            break
+
         # Запуск 2-х процессорной сортировки
         main_timer.start_for('2_core')
         sorted_array = parallel_merge_sort(unsorted_array, 2)
@@ -204,15 +228,17 @@ if __name__ == '__main__':
 
         y1.append((main_timer['sync']))
         y2.append((main_timer['thread']))
-        y3.append((main_timer['2_core']))
-        y4.append((main_timer['4_core']))
+        y3.append((main_timer['async']))
+        y4.append((main_timer['2_core']))
+        y5.append((main_timer['4_core']))
     plt.title('Сравнение времени сортировки слиянием')
     plt.xlabel('Размер массива (элементов)')
     plt.ylabel('Время выполнения (сек)')
-    plt.plot(x, y1, label='Sync', linestyle='-')
-    plt.plot(x, y2, label='Thread', linestyle=':')
-    plt.plot(x, y3, label='2-Core', linestyle='--')
-    plt.plot(x, y4, label='4-Core', linestyle='-.')
+    plt.plot(x, y1, label='Sync', linestyle='solid')
+    plt.plot(x, y2, label='Thread', linestyle='dashed')
+    plt.plot(x, y3, label='Async', linestyle='dotted')
+    plt.plot(x, y4, label='2-Core', linestyle='solid')
+    plt.plot(x, y5, label='4-Core', linestyle='dashdot')
 
     plt.legend()
     plt.grid(True, which='both', linestyle='--')
