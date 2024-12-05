@@ -1,12 +1,19 @@
 import asyncio
 import random
-import aiofiles
-import time
 import threading
-from async_class import AsyncClass, AsyncObject, task, link
+import time
+import aiofiles
+from async_class import AsyncClass
+
 
 class AsyncTester(AsyncClass):
     async def __ainit__(self, files_count, file_size):
+        """
+
+        :param files_count:
+        :param file_size:
+        :return:
+        """
         self.files_count = files_count
         self.file_size = file_size
 
@@ -21,21 +28,22 @@ class AsyncTester(AsyncClass):
         threads_count = threading.active_count()
         await asyncio.gather(*write_tasks)
         await asyncio.gather(*read_tasks)
-        return (self.file_size, (time.time() - start_time), threads_count)
+        return self.file_size, (time.time() - start_time), threads_count
 
     async def writter(self, filename):
         async with aiofiles.open(filename, mode='w') as file:
             content = ''.join([str(num) for num in range(self.file_size)])
             await file.write(content)
 
-    async def reader(self, files_count):
+    @staticmethod
+    async def reader(files_count):
         i = random.randint(0, files_count - 1)
         async with aiofiles.open(f'{i}.txt', mode='r') as file:
             await asyncio.sleep(random.uniform(0, 2))
             await file.read()
 
 
-class ThreadTester():
+class ThreadTester:
     def __init__(self, files_count, file_size):
         self.files_count = files_count
         self.file_size = file_size
@@ -60,15 +68,16 @@ class ThreadTester():
         threads_count = max(threads_count, threading.active_count())
         for thread in read_threads:
             thread.join()
-        return (self.file_size, (time.time() - start_time), threads_count)
+        return self.file_size, (time.time() - start_time), threads_count
 
     def writter(self, i):
         with open(f'{i}.txt', mode='w') as file:
             content = ''.join([str(num) for num in range(self.file_size)])
             file.write(content)
 
-    def reader(self, files_count):
+    @staticmethod
+    def reader(files_count):
         i = random.randint(0, files_count - 1)
         with open(f'{i}.txt', mode='r') as file:
             time.sleep(random.uniform(0, 2))
-            content = file.read()
+            file.read()

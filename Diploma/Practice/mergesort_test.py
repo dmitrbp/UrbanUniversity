@@ -1,5 +1,5 @@
-from concurrent.futures import ThreadPoolExecutor
 import time
+from concurrent.futures import ThreadPoolExecutor
 from contextlib import contextmanager
 from multiprocessing import Manager, Pool
 import matplotlib.pyplot as plt
@@ -7,14 +7,30 @@ import asyncio
 
 
 class Timer:
+    """
+    Класс для подсчета длительности вычислительных операций
+    """
     def __init__(self, *steps):
+        """
+        Конструктор класса
+        :param steps: Имена шагов (ключи словаря), для записи и чтения данных по длительности
+        """
         self._time_per_step = dict.fromkeys(steps)
 
     def __getitem__(self, item):
+        """
+        Магический метод получения значения по ключу
+        :param item: значение ключа (имя шага измерения)
+        :return: значение из словаря (длительность операции)
+        """
         return self.time_per_step[item]
 
     @property
     def time_per_step(self):
+        """
+        Свойство для чтения элементов словаря
+        :return: значение длительности операции
+        """
         return {
             step: elapsed_time
             for step, elapsed_time in self._time_per_step.items()
@@ -22,21 +38,49 @@ class Timer:
         }
 
     def start_for(self, step):
+        """
+        Запуск таймера для определенного шага
+        :param step: шаг
+        :return: None
+        """
         self._time_per_step[step] = -time.time()
 
     def stop_for(self, step):
+        """
+        Остановка таймера для определенного шага
+        :param step: шаг
+        :return: None
+        """
         self._time_per_step[step] += time.time()
 
 
 def merge_sort_multiple(results, array):
+    """
+    Функция сортировки для многопроцессорной обработки
+    :param results: массив для агрегирования результатов
+    :param array: сортируемый массив
+    :return: None
+    """
     results.append(merge_sort(array))
 
 
 def merge_multiple(results, array_part_left, array_part_right):
+    """
+    Функция слияния результатов для многопроцессорной обработки
+    :param results: массив для агрегирования результатов
+    :param array_part_left: левый массив для слияния
+    :param array_part_right: правый массив для слияния
+    :return: None
+    """
     results.append(merge(array_part_left, array_part_right))
 
 
 def merge_sort(array):
+    """
+    Функция сортировки для одного потока выполнения
+    :param array: сортируемый массив
+    :return: отсортированный массив
+    """
     array_length = len(array)
 
     if array_length <= 1:
@@ -50,6 +94,13 @@ def merge_sort(array):
     return merge(left, right)
 
 def thread_merge_sort(array, level = 0):
+    """
+    Функция сортировки для многопотоковой обработки
+    :param array: сортируемый массив
+    :param level: глубина сортировки, начиная с которой вызывается однопоточная сортировка.
+    До этого уровня вызывается многопоточная
+    :return: отсортированный массив
+    """
     level += 1
     array_length = len(array)
     if array_length <= 1:
@@ -70,6 +121,11 @@ def thread_merge_sort(array, level = 0):
     return merge(left, right)
 
 async def async_merge_sort(array):
+    """
+    Функция сортировки для корутинной (asyncio) обработки
+    :param array: сортируемый массив
+    :return: отсортированный массив
+    """
     array_length = len(array)
     if array_length <= 1:
         return array
@@ -85,6 +141,12 @@ async def async_merge_sort(array):
     return merge(left, right)
 
 def merge(left, right):
+    """
+    Функция однопоточного слияния двух массивов
+    :param left: левый массив
+    :param right: правый массив
+    :return: массив после слияния правой и левой частей
+    """
     sorted_list = []
     # Создаем копии, чтобы не изменять
     # оригинальные объекты.
@@ -108,7 +170,9 @@ def merge(left, right):
 @contextmanager
 def process_pool(size):
     """
-    Создаем пул процессов и блокируйте его до тех пор, пока все процессы не завершатся.
+    Создаем пул процессов и блокируем его до тех пор, пока все процессы не завершатся.
+    :param size: размер пула
+    :return: None
     """
     pool = Pool(size)
     yield pool
@@ -116,6 +180,12 @@ def process_pool(size):
     pool.join()
 
 def parallel_merge_sort(array, process_count):
+    """
+    Основная функция многопроцессорной сортировки
+    :param array: сортируемый массив
+    :param process_count: количество процессоров, задействованных в сортировке
+    :return: отсортированный массив
+    """
     # Делим список на части
     step = int(length / process_count)
 
@@ -131,7 +201,7 @@ def parallel_merge_sort(array, process_count):
             # значение, возвращаемое функцией merge_sort_multiple,
             # использую подсписок, как входное значение
             if n < process_count - 1:
-                chunk = array[n * step:(n + 1) * step]
+                chunk = array[n * step : (n + 1) * step]
             else:
                 # Оставшиеся элементы - в список
                 chunk = array[n * step:]
@@ -153,21 +223,20 @@ def parallel_merge_sort(array, process_count):
 
 
 if __name__ == '__main__':
-    x = []
-    y = []
+    # Подготовка данных для графического отображения
+    x  = []
     y1 = []
     y2 = []
     y3 = []
     y4 = []
     y5 = []
-    for length in range(20000, 100001, 20000):
+    for length in range(20000, 200001, 20000):
         x.append(length)
         print('-- Размер сортируемого массива - {:,}'.format(length).replace(',',' '))
 
-        main_timer = Timer('sync', 'thread', 'asyncio', '2_core', '4_core')
+        main_timer = Timer('sync', 'thread', 'async', '2_core', '4_core')
 
-        # Создание массива для сортировки
-        # randomized_array = [random.randint(0, n * 100) for n in range(length)]
+        # Создание разреженного массива для более интенсивной сортировки
         unsorted_array = [i if i % 2 else length - i for i in range(length, 0, -1)]
         # Создаение отсортированной копии для сравнения
         sorted_array_etalon = unsorted_array[:]
@@ -197,11 +266,11 @@ if __name__ == '__main__':
             break
 
         # Запуск корутинной сортировки
-        main_timer.start_for('asyncio')
+        main_timer.start_for('async')
         sorted_array = asyncio.run(async_merge_sort(unsorted_array))
-        main_timer.stop_for('asyncio')
+        main_timer.stop_for('async')
         if sorted_array_etalon == sorted_array:
-            print('Время корутинной сортировки: %4.6f sec' % main_timer['asyncio'])
+            print('Время корутинной сортировки: %4.6f sec' % main_timer['async'])
         else:
             print('AsyncSort: Отсортированный массив не совпадает с эталонным')
             break
@@ -226,11 +295,14 @@ if __name__ == '__main__':
             print('4-CoreSort: Отсортированный массив не совпадает с эталонным')
             break
 
+        # Сохранение графических результатов
         y1.append((main_timer['sync']))
         y2.append((main_timer['thread']))
         y3.append((main_timer['async']))
         y4.append((main_timer['2_core']))
         y5.append((main_timer['4_core']))
+
+    # Вывод графических результатов
     plt.title('Сравнение времени сортировки слиянием')
     plt.xlabel('Размер массива (элементов)')
     plt.ylabel('Время выполнения (сек)')
@@ -239,7 +311,6 @@ if __name__ == '__main__':
     plt.plot(x, y3, label='Async', linestyle='dotted')
     plt.plot(x, y4, label='2-Core', linestyle='solid')
     plt.plot(x, y5, label='4-Core', linestyle='dashdot')
-
     plt.legend()
     plt.grid(True, which='both', linestyle='--')
     plt.show()
