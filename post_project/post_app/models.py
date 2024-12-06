@@ -9,3 +9,4 @@ class Post(models.Model):
     post_content = models.TextField(verbose_name='Содержание статьи')
     def __str__(self):
         return self.post_title
+
