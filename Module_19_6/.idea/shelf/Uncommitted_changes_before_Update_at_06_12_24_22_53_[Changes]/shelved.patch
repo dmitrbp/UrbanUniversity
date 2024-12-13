@@ -1,0 +1,573 @@
+Index: ../Module_19_2/.idea/Module_19_2.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_19_2/.idea/Module_19_2.iml b/../Module_19_2/.idea/Module_19_2.iml
+new file mode 100644
+--- /dev/null	(date 1731586722746)
++++ b/../Module_19_2/.idea/Module_19_2.iml	(date 1731586722746)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/.venv" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: ../Module_17_2/.idea/Module_17_2.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_17_2/.idea/Module_17_2.iml b/../Module_17_2/.idea/Module_17_2.iml
+new file mode 100644
+--- /dev/null	(date 1730212267519)
++++ b/../Module_17_2/.idea/Module_17_2.iml	(date 1730212267519)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$" />
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: ../Module_17_4/.idea/Module_17_4.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_17_4/.idea/Module_17_4.iml b/../Module_17_4/.idea/Module_17_4.iml
+new file mode 100644
+--- /dev/null	(date 1730316516434)
++++ b/../Module_17_4/.idea/Module_17_4.iml	(date 1730316516434)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/.venv" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: ../Module_18_3/.idea/Module_18_3.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_18_3/.idea/Module_18_3.iml b/../Module_18_3/.idea/Module_18_3.iml
+new file mode 100644
+--- /dev/null	(date 1730989123365)
++++ b/../Module_18_3/.idea/Module_18_3.iml	(date 1730989123365)
+@@ -0,0 +1,11 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
++      <excludeFolder url="file://$MODULE_DIR$/.venv" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: ../Module_18_1/.idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_18_1/.idea/.gitignore b/../Module_18_1/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1730573952000)
++++ b/../Module_18_1/.idea/.gitignore	(date 1730573952000)
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+Index: ../Module_17_3/.idea/Module_17_3.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_17_3/.idea/Module_17_3.iml b/../Module_17_3/.idea/Module_17_3.iml
+new file mode 100644
+--- /dev/null	(date 1730225271694)
++++ b/../Module_17_3/.idea/Module_17_3.iml	(date 1730225271694)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/.venv" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: ../Module_19_1/.idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_19_1/.idea/.gitignore b/../Module_19_1/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1731483823620)
++++ b/../Module_19_1/.idea/.gitignore	(date 1731483823620)
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+Index: ../.idea/UrbanUniversity.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../.idea/UrbanUniversity.iml b/../.idea/UrbanUniversity.iml
+new file mode 100644
+--- /dev/null	(date 1733315813529)
++++ b/../.idea/UrbanUniversity.iml	(date 1733315813529)
+@@ -0,0 +1,17 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/Diploma/.venv" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++  <component name="PyDocumentationSettings">
++    <option name="format" value="PLAIN" />
++    <option name="myDocStringFormat" value="Plain" />
++  </component>
++  <component name="TestRunnerService">
++    <option name="PROJECT_TEST_RUNNER" value="py.test" />
++  </component>
++</module>
+\ No newline at end of file
+Index: ../Module_19_1/game_shop/task1/migrations/0001_initial.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_19_1/game_shop/task1/migrations/0001_initial.py b/../Module_19_1/game_shop/task1/migrations/0001_initial.py
+new file mode 100644
+--- /dev/null	(date 1731509056933)
++++ b/../Module_19_1/game_shop/task1/migrations/0001_initial.py	(date 1731509056933)
+@@ -0,0 +1,35 @@
++# Generated by Django 5.1.3 on 2024-11-13 14:44
++
++from django.db import migrations, models
++
++
++class Migration(migrations.Migration):
++
++    initial = True
++
++    dependencies = [
++    ]
++
++    operations = [
++        migrations.CreateModel(
++            name='Buyer',
++            fields=[
++                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
++                ('name', models.CharField(max_length=100)),
++                ('balance', models.DecimalField(decimal_places=2, max_digits=6)),
++                ('age', models.IntegerField()),
++            ],
++        ),
++        migrations.CreateModel(
++            name='Game',
++            fields=[
++                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
++                ('title', models.CharField(max_length=200)),
++                ('cost', models.DecimalField(decimal_places=2, max_digits=6)),
++                ('size', models.DecimalField(decimal_places=2, max_digits=12)),
++                ('description', models.TextField()),
++                ('age_limit', models.BooleanField(default=False)),
++                ('buyer', models.ManyToManyField(related_name='games', to='task1.buyer')),
++            ],
++        ),
++    ]
+Index: ../Module_19_1/.idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_19_1/.idea/misc.xml b/../Module_19_1/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1731484885265)
++++ b/../Module_19_1/.idea/misc.xml	(date 1731484885265)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Black">
++    <option name="sdkName" value="Python 3.12 (Module_19_1)" />
++  </component>
++  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (Module_19_1)" project-jdk-type="Python SDK" />
++  <component name="PyCharmProfessionalAdvertiser">
++    <option name="shown" value="true" />
++  </component>
++</project>
+\ No newline at end of file
+Index: ../Module_19_2/game_shop/task1/models.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from django.db import models\r\n\r\nclass Buyer(models.Model):\r\n    name = models.CharField(max_length=100)\r\n    balance = models.DecimalField(max_digits=6, decimal_places=2)\r\n    age = models.IntegerField()\r\n\r\nclass Game(models.Model):\r\n    title = models.CharField(max_length=200)\r\n    cost = models.DecimalField(max_digits=6, decimal_places=2)\r\n    size = models.DecimalField(max_digits=12, decimal_places=2)\r\n    description = models.TextField()\r\n    age_limit = models.BooleanField(default=False)\r\n    buyer = models.ManyToManyField(Buyer, related_name='games')\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_19_2/game_shop/task1/models.py b/../Module_19_2/game_shop/task1/models.py
+--- a/../Module_19_2/game_shop/task1/models.py	(revision 8d49a2b7f2d2f1b301272877cf5e4938ddb45efc)
++++ b/../Module_19_2/game_shop/task1/models.py	(date 1731603276510)
+@@ -4,6 +4,8 @@
+     name = models.CharField(max_length=100)
+     balance = models.DecimalField(max_digits=6, decimal_places=2)
+     age = models.IntegerField()
++    def __str__(self):
++        return self.name
+ 
+ class Game(models.Model):
+     title = models.CharField(max_length=200)
+@@ -12,3 +14,5 @@
+     description = models.TextField()
+     age_limit = models.BooleanField(default=False)
+     buyer = models.ManyToManyField(Buyer, related_name='games')
++    def __str__(self):
++        return self.title
+Index: ../Module_18_2/.idea/Module_18_2.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_18_2/.idea/Module_18_2.iml b/../Module_18_2/.idea/Module_18_2.iml
+new file mode 100644
+--- /dev/null	(date 1730729138269)
++++ b/../Module_18_2/.idea/Module_18_2.iml	(date 1730729138269)
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/.venv" />
++    </content>
++    <orderEntry type="jdk" jdkName="Python 3.12 (Module_18_2)" jdkType="Python SDK" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++  <component name="PyDocumentationSettings">
++    <option name="format" value="PLAIN" />
++    <option name="myDocStringFormat" value="Plain" />
++  </component>
++</module>
+\ No newline at end of file
+Index: ../Module_18_1/.idea/Module_18_1.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_18_1/.idea/Module_18_1.iml b/../Module_18_1/.idea/Module_18_1.iml
+new file mode 100644
+--- /dev/null	(date 1730623184459)
++++ b/../Module_18_1/.idea/Module_18_1.iml	(date 1730623184459)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/.venv" />
++    </content>
++    <orderEntry type="jdk" jdkName="Python 3.12 (Module_18_1) (2)" jdkType="Python SDK" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: ../Module_17_1/.idea/Module_17_1.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_17_1/.idea/Module_17_1.iml b/../Module_17_1/.idea/Module_17_1.iml
+new file mode 100644
+--- /dev/null	(date 1730214547465)
++++ b/../Module_17_1/.idea/Module_17_1.iml	(date 1730214547465)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/.venv" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: ../Module_19_1/.idea/Module_19_1.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_19_1/.idea/Module_19_1.iml b/../Module_19_1/.idea/Module_19_1.iml
+new file mode 100644
+--- /dev/null	(date 1731483823494)
++++ b/../Module_19_1/.idea/Module_19_1.iml	(date 1731483823494)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/.venv" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: ../Module_18_5/.idea/Module_18_5.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_18_5/.idea/Module_18_5.iml b/../Module_18_5/.idea/Module_18_5.iml
+new file mode 100644
+--- /dev/null	(date 1731243293093)
++++ b/../Module_18_5/.idea/Module_18_5.iml	(date 1731243293093)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/.venv" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: ../Module_18_1/.idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_18_1/.idea/modules.xml b/../Module_18_1/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1730573966000)
++++ b/../Module_18_1/.idea/modules.xml	(date 1730573966000)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/Module_18_1.iml" filepath="$PROJECT_DIR$/.idea/Module_18_1.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: ../Module_19_1/.idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_19_1/.idea/modules.xml b/../Module_19_1/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1731483823501)
++++ b/../Module_19_1/.idea/modules.xml	(date 1731483823501)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/Module_19_1.iml" filepath="$PROJECT_DIR$/.idea/Module_19_1.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: ../Module_19_3/.idea/Module_19_3.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_19_3/.idea/Module_19_3.iml b/../Module_19_3/.idea/Module_19_3.iml
+new file mode 100644
+--- /dev/null	(date 1731758369809)
++++ b/../Module_19_3/.idea/Module_19_3.iml	(date 1731758369809)
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/.venv" />
++    </content>
++    <orderEntry type="jdk" jdkName="Python 3.12 (Module_19_3)" jdkType="Python SDK" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++  <component name="PyDocumentationSettings">
++    <option name="format" value="PLAIN" />
++    <option name="myDocStringFormat" value="Plain" />
++  </component>
++</module>
+\ No newline at end of file
+Index: ../Module_18_1/.idea/inspectionProfiles/profiles_settings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_18_1/.idea/inspectionProfiles/profiles_settings.xml b/../Module_18_1/.idea/inspectionProfiles/profiles_settings.xml
+new file mode 100644
+--- /dev/null	(date 1730573966000)
++++ b/../Module_18_1/.idea/inspectionProfiles/profiles_settings.xml	(date 1730573966000)
+@@ -0,0 +1,6 @@
++<component name="InspectionProjectProfileManager">
++  <settings>
++    <option name="USE_PROJECT_PROFILE" value="false" />
++    <version value="1.0" />
++  </settings>
++</component>
+\ No newline at end of file
+Index: ../Module_19_1/.idea/inspectionProfiles/profiles_settings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_19_1/.idea/inspectionProfiles/profiles_settings.xml b/../Module_19_1/.idea/inspectionProfiles/profiles_settings.xml
+new file mode 100644
+--- /dev/null	(date 1731483823512)
++++ b/../Module_19_1/.idea/inspectionProfiles/profiles_settings.xml	(date 1731483823512)
+@@ -0,0 +1,6 @@
++<component name="InspectionProjectProfileManager">
++  <settings>
++    <option name="USE_PROJECT_PROFILE" value="false" />
++    <version value="1.0" />
++  </settings>
++</component>
+\ No newline at end of file
+Index: ../Module_18_4/.idea/Module_18_4.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_18_4/.idea/Module_18_4.iml b/../Module_18_4/.idea/Module_18_4.iml
+new file mode 100644
+--- /dev/null	(date 1731071858893)
++++ b/../Module_18_4/.idea/Module_18_4.iml	(date 1731071858893)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/.venv" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: ../Module_18_1/.idea/inspectionProfiles/Project_Default.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_18_1/.idea/inspectionProfiles/Project_Default.xml b/../Module_18_1/.idea/inspectionProfiles/Project_Default.xml
+new file mode 100644
+--- /dev/null	(date 1730573966000)
++++ b/../Module_18_1/.idea/inspectionProfiles/Project_Default.xml	(date 1730573966000)
+@@ -0,0 +1,13 @@
++<component name="InspectionProjectProfileManager">
++  <profile version="1.0">
++    <option name="myName" value="Project Default" />
++    <inspection_tool class="PyTypeCheckerInspection" enabled="false" level="WARNING" enabled_by_default="false" />
++    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
++      <option name="ignoredIdentifiers">
++        <list>
++          <option value="fastapi" />
++        </list>
++      </option>
++    </inspection_tool>
++  </profile>
++</component>
+\ No newline at end of file
+Index: ../Module_18_2/UrbanDjango/UrbanDjango/urls.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\"\"\"\r\nURL configuration for UrbanDjango project.\r\n\r\nThe `urlpatterns` list routes URLs to views. For more information please see:\r\n    https://docs.djangoproject.com/en/5.1/topics/http/urls/\r\nExamples:\r\nFunction views\r\n    1. Add an import:  from my_app import views\r\n    2. Add a URL to urlpatterns:  path('', views.home, name='home')\r\nClass-based views\r\n    1. Add an import:  from other_app.views import Home\r\n    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')\r\nIncluding another URLconf\r\n    1. Import the include() function: from django.urls import include, path\r\n    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))\r\n\"\"\"\r\nfrom django.contrib import admin\r\nfrom django.urls import path\r\nfrom django.views.generic import TemplateView\r\nfrom task2.views import cview, fview\r\n\r\nurlpatterns = [\r\n    path('admin/', admin.site.urls),\r\n    path('', TemplateView.as_view(template_name='index.html')),\r\n    path('class/', cview),\r\n    path('func/', fview)\r\n]\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_18_2/UrbanDjango/UrbanDjango/urls.py b/../Module_18_2/UrbanDjango/UrbanDjango/urls.py
+--- a/../Module_18_2/UrbanDjango/UrbanDjango/urls.py	(revision 8d49a2b7f2d2f1b301272877cf5e4938ddb45efc)
++++ b/../Module_18_2/UrbanDjango/UrbanDjango/urls.py	(date 1730883819914)
+@@ -18,6 +18,7 @@
+ from django.urls import path
+ from django.views.generic import TemplateView
+ from task2.views import cview, fview
++# from ..task2.views import cview, fview
+ 
+ urlpatterns = [
+     path('admin/', admin.site.urls),
+Index: ../Module_18_1/.idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_18_1/.idea/vcs.xml b/../Module_18_1/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1730573966000)
++++ b/../Module_18_1/.idea/vcs.xml	(date 1730573966000)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: ../Module_19_1/.idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_19_1/.idea/vcs.xml b/../Module_19_1/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1731483823530)
++++ b/../Module_19_1/.idea/vcs.xml	(date 1731483823530)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: ../Module_Introduction/.idea/Module_Introduction.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../Module_Introduction/.idea/Module_Introduction.iml b/../Module_Introduction/.idea/Module_Introduction.iml
+new file mode 100644
+--- /dev/null	(date 1731575079170)
++++ b/../Module_Introduction/.idea/Module_Introduction.iml	(date 1731575079170)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/.venv" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
