@@ -1,6 +1,7 @@
 import os
 import json
 import csv
+from tabulate import tabulate
 
 class PriceMachine():
     
@@ -39,29 +40,28 @@ class PriceMachine():
                 file_data = list(reader)
             columns = self._search_product_price_weight(file_data[0])
             for row_index in range(1, len(file_data)):
-                self.data.append([
-                    file_data[row_index][columns[0]],
-                    int(file_data[row_index][columns[1]]),
-                    int(file_data[row_index][columns[2]]),
-                    file,
-                    int(file_data[row_index][columns[1]]) / int(file_data[row_index][columns[2]])
-                ])
+                name = file_data[row_index][columns[0]]
+                full_weigth = int(file_data[row_index][columns[1]])
+                quantity = int(file_data[row_index][columns[2]])
+                piece_weigth = round(full_weigth / quantity, 2)
+                self.data.append([name, full_weigth, quantity, file, piece_weigth])
+        return 'Загрузка файлов завершена'
         
     def _search_product_price_weight(self, headers):
         '''
             Возвращает номера столбцов
         '''
-        names = [
+        columns_names = [
             ["название", "продукт", "товар", "наименование"],
             ["цена", "розница"],
             ["фасовка", "масса", "вес"]
         ]
-        columns = []
-        for name_set in names:
+        columns_indexes = []
+        for column_names in columns_names:
             for header in headers:
-                if header in name_set:
-                    columns.append(headers.index(header))
-        return columns
+                if header in column_names:
+                    columns_indexes.append(headers.index(header))
+        return columns_indexes
 
     def export_to_html(self, fname='output.html'):
         result = '''
@@ -81,18 +81,35 @@ class PriceMachine():
                     <th>Цена за кг.</th>
                 </tr>
         '''
-        pass
-    
+        for number, item in enumerate(self.data, start=1):
+            name, price, weigth, file, unit_price = item
+            result += '<tr>'
+            result += f'<td>{number}</td>'
+            result += f'<td>{name}</td>'
+            result += f'<td>{price}</td>'
+            result += f'<td>{weigth}</td>'
+            result += f'<td>{file}</td>'
+            result += f'<td>{unit_price}</td>'
+            result += '</tr>'
+        result += '</table></body>'
+        with open(fname, 'w') as f:
+            f.write(result)
+        return 'Запись в файл завершена'
+
     def find_text(self, text):
-        pass
+        data_selected =sorted(filter(lambda x: text.lower() in x[0].lower(), self.data), key = lambda y: y[4])
+        return [[index, *data] for index, data in enumerate(data_selected, start=1)]
 
     
 pm = PriceMachine()
 print(pm.load_prices('data'))
 
-'''
-    Логика работы программы
-'''
-print(sorted(pm.data, key=lambda x: x[4]))
+while True:
+    search_str = input('\nВведите строку для поиска:')
+    if search_str == 'exit':
+        break
+    data_printed = pm.find_text(search_str)
+    print(tabulate(data_printed, headers=['№', 'Наименование', 'Цена', 'Вес', 'Файл', 'Цена за кг.'], floatfmt=".2f"))
+
 print('the end')
-# print(pm.export_to_html())
+print(pm.export_to_html())
