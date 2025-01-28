@@ -1,17 +1,17 @@
-import os
-import json
 import csv
+import os
 from tabulate import tabulate
 
-class PriceMachine():
+
+class PriceMachine:
     
     def __init__(self):
         self.data = []
-        self.result = ''
-        self.name_length = 0
+        # self.result = ''
+        # self.name_length = 0
     
     def load_prices(self, file_path=''):
-        '''
+        """
             Сканирует указанный каталог. Ищет файлы со словом price в названии.
             В файле ищет столбцы с названием товара, ценой и весом.
             Допустимые названия для столбца с товаром:
@@ -19,38 +19,50 @@ class PriceMachine():
                 название
                 наименование
                 продукт
-                
+
             Допустимые названия для столбца с ценой:
                 розница
                 цена
-                
+
             Допустимые названия для столбца с весом (в кг.)
                 вес
                 масса
                 фасовка
-        '''
+        """
         files = [
             file for file in os.listdir(file_path)
             if os.path.isfile(os.path.join(file_path, file)) and 'price' in file
         ]
         for file in files:
-            file_data = []
-            with open(os.path.join(file_path, file), newline='') as f:
-                reader = csv.reader(f)
-                file_data = list(reader)
-            columns = self._search_product_price_weight(file_data[0])
-            for row_index in range(1, len(file_data)):
-                name = file_data[row_index][columns[0]]
-                full_weigth = int(file_data[row_index][columns[1]])
-                quantity = int(file_data[row_index][columns[2]])
-                piece_weigth = round(full_weigth / quantity, 2)
-                self.data.append([name, full_weigth, quantity, file, piece_weigth])
+            self.process_file(os.path.join(file_path, file))
+            # with open(os.path.join(file_path, file), newline='') as f:
+            #     reader = csv.reader(f)
+            #     file_data = list(reader)
+            # columns = self._search_product_price_weight(file_data[0])
+            # for row_index in range(1, len(file_data)):
+            #     name = file_data[row_index][columns[0]]
+            #     full_weigth = int(file_data[row_index][columns[1]])
+            #     quantity = int(file_data[row_index][columns[2]])
+            #     piece_weigth = round(full_weigth / quantity, 2)
+            #     self.data.append([name, full_weigth, quantity, file, piece_weigth])
         return 'Загрузка файлов завершена'
-        
+
+    def process_file(self, file):
+        with open(file, newline='') as f:
+            reader = csv.reader(f)
+            file_data = list(reader)
+        columns = self._search_product_price_weight(file_data[0])
+        for row_index in range(1, len(file_data)):
+            name = file_data[row_index][columns[0]]
+            full_weigth = int(file_data[row_index][columns[1]])
+            quantity = int(file_data[row_index][columns[2]])
+            piece_weigth = round(full_weigth / quantity, 2)
+            self.data.append([name, full_weigth, quantity, file, piece_weigth])
+
     def _search_product_price_weight(self, headers):
-        '''
+        """
             Возвращает номера столбцов
-        '''
+        """
         columns_names = [
             ["название", "продукт", "товар", "наименование"],
             ["цена", "розница"],
@@ -61,6 +73,7 @@ class PriceMachine():
             for header in headers:
                 if header in column_names:
                     columns_indexes.append(headers.index(header))
+                    break
         return columns_indexes
 
     def export_to_html(self, fname='output.html'):
@@ -104,12 +117,13 @@ class PriceMachine():
 pm = PriceMachine()
 print(pm.load_prices('data'))
 
+print('Начало цикла поиска')
 while True:
-    search_str = input('\nВведите строку для поиска:')
-    if search_str == 'exit':
+    search_str = input('\nВведите строку для поиска. Выход-"exit" или "выход":')
+    if search_str in ['exit', 'выход']:
         break
     data_printed = pm.find_text(search_str)
     print(tabulate(data_printed, headers=['№', 'Наименование', 'Цена', 'Вес', 'Файл', 'Цена за кг.'], floatfmt=".2f"))
 
-print('the end')
+print('Конец цикла поиска')
 print(pm.export_to_html())
